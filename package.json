@@ -1,0 +1,11 @@
+{
+  "name": "module-mash-up",
+  "version": "1.0.0",
+  "description": "A module which generates module dependecy config objects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andreas Deuschlinger",
+  "license": "ISC"
+}
