@@ -11,13 +11,13 @@ function mashMultiple(configs) {
     var i= 0, l=configKeys.length;
     var name;
     var config;
-    var moduleMashes = {};
+    var moduleMashes = [];
 
     for(; i<l; i++) {
         name = configKeys[i];
         config = configs[name];
 
-        moduleMashes[name] = mashupModuleConfig(config, name);
+        moduleMashes.push(mashupModuleConfig(config, name))
     }
 
     return moduleMashes;
@@ -34,6 +34,7 @@ function mashupModuleConfig(config, name) {
     var module;
     var dependencyHash;
     var dependencyLiteral;
+    var dependencyList = [];
 
     // loop through all modules
     for(; i<l; i++) {
@@ -44,9 +45,17 @@ function mashupModuleConfig(config, name) {
         dependencyHash = mashupModuleDependencies(module, moduleDependency, config);
 
         dependencyLiteral = hashToLiteral(dependencyHash);
+
+        dependencyList.push({
+            module: module,
+            config: dependencyLiteral
+        })
     }
 
-    return dependencyLiteral;
+    return {
+        name: name,
+        dependencies: dependencyList
+    };
 }
 
 
