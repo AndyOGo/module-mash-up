@@ -53,7 +53,7 @@ function mashupModuleConfig(config, name) {
     }
 
     return {
-        name: name,
+        name: name.replace(/(?:\.json|\.js)$/, ''),
         dependencies: dependencyList
     };
 }
